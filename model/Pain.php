@@ -19,6 +19,8 @@ final class Pain {
     private $trigger;
     private $amount;
     private $quantity;
+    private $substance;
+    private $pain;
     
     
     public function __construct() {
@@ -68,6 +70,12 @@ final class Pain {
     public function getId() {
         return $this->id;
     }
+    public function getPain(){
+        return $this->pain;
+    }
+    public function getSubstance(){
+        return $this->substance;
+    }
 
     public function setCreatedOn($createdOn) {
         $this->createdon = $createdOn;
@@ -91,6 +99,12 @@ final class Pain {
 
     public function setQuantity($quantity) {
         $this->quantity = $quantity;
+    }
+    public function setPain($pain){
+        $this->pain = $pain;
+    }
+    public function setSubstance($substance){
+        $this->substance = $substance;
     }
 
         

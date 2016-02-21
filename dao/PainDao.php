@@ -22,5 +22,14 @@ final class PainDao {
         }
         return $result;
     }
+    public function findById($id) {
+        $row = $this->query('SELECT * FROM todo WHERE deleted = 0 and id = ' . (int) $id)->fetch();
+        if (!$row) {
+            return null;
+        }
+        $todo = new Todo();
+        TodoMapper::map($todo, $row);
+        return $todo;
+    }
 }
 

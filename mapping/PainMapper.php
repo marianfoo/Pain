@@ -38,6 +38,12 @@ final class Painmapper {
         if (array_key_exists('quantity', $properties)) {
             $pain->setQuantity($properties['quantity']);
         }
+        if (array_key_exists('pain', $properties)) {
+            $pain->setPain($properties['pain']);
+        }
+        if (array_key_exists('substance', $properties)) {
+            $pain->setSubstance($properties['substance']);
+        }
         
     }
     private static function createDateTime($input) {
