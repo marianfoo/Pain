@@ -1,0 +1,99 @@
+<?php
+
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+final class Pain {
+    const PAIN = array(1,2,3,4,5,6,7,8,9,10);
+    
+    const IBUPROPHEN = "IBU";
+    const MIRTAZAPIN = "MIRTA";
+    
+    private $id;
+    private $createdOn;
+    private $lastModifiedOn;
+    private $comment;
+    private $trigger;
+    private $amount;
+    private $quantity;
+    
+    
+    public function __construct() {
+        $now = new DateTime();
+        $this->setCreatedOn($now);
+        $this->setLastModifiedOn($now);
+    }
+    
+    public static function allSubstances() {
+        return array(
+            self::IBUPROPHEN,
+            self::MIRTAZAPIN,
+        );
+    }
+    
+    public function setId($id) {
+        if ($this->id !== null && $this->id != $id) {
+            throw new Exception('Cannot change identifier to ' . $id . ', already set to ' . $this->id);
+        }
+        $this->id = (int) $id;
+    }
+
+    public function getCreatedOn() {
+        return $this->createdOn;
+    }
+
+    public function getLastModifiedOn() {
+        return $this->lastModifiedOn;
+    }
+
+    public function getComment() {
+        return $this->comment;
+    }
+
+    public function getTrigger() {
+        return $this->trigger;
+    }
+
+    public function getAmount() {
+        return $this->amount;
+    }
+
+    public function getQuantity() {
+        return $this->quantity;
+    }
+
+    public function getId() {
+        return $this->id;
+    }
+
+    public function setCreatedOn($createdOn) {
+        $this->createdon = $createdOn;
+    }
+
+    public function setLastModifiedOn($lastModifiedOn) {
+        $this->lastModifiedOn = $lastModifiedOn;
+    }
+
+    public function setComment($comment) {
+        $this->comment = $comment;
+    }
+
+    public function setTrigger($trigger) {
+        $this->trigger = $trigger;
+    }
+
+    public function setAmount($amount) {
+        $this->amount = $amount;
+    }
+
+    public function setQuantity($quantity) {
+        $this->quantity = $quantity;
+    }
+
+        
+    
+}
+
