@@ -44,6 +44,9 @@ final class Painmapper {
         if (array_key_exists('substance', $properties)) {
             $pain->setSubstance($properties['substance']);
         }
+        if (array_key_exists('deleted', $properties)) {
+            $pain->setDeleted($properties['deleted']);
+        }
         
     }
     private static function createDateTime($input) {

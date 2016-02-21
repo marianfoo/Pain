@@ -1,4 +1,3 @@
-<?php
 /*
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
  *
@@ -41,29 +40,81 @@
  * Portions Copyrighted 2011 Sun Microsystems, Inc.
  */
 
-/**
- * Search criteria for {@link PainDao}.
- * <p>
- * Can be easily extended without changing the {@link PainDao} API.
- */
-final class PainSearchCriteria {
+$(document).ready(function() {
+    initDatepicker();
+    initFlashes();
+    initErrorFields();
+    initChangeStatusDialog();
+    initDeleteDialog();
+});
 
-    private $substance = null;
+function initDatepicker() {
+    $('.datepicker')
+        .attr('readonly', 'readonly')
+        .datepicker({
+            dateFormat: 'yy-m-d'
+        });
+}
 
-
-    /**
-     * @return string
-     */
-    public function getSubstance() {
-        return $this->substance;
+function initFlashes() {
+    var flashes = $("#flashes");
+    if (!flashes.length) {
+        return;
     }
+    setTimeout(function() {
+        flashes.slideUp("slow");
+    }, 2000);
+}
 
-    /**
-     * @return PainSearchCriteria
-     */
-    public function setSubstance($substance) {
-        $this->substance = $substance;
-        return $this;
-    }
+function initErrorFields() {
+    $('.error-field').first().focus();
+}
 
+function initDeleteDialog() {
+    var deleteDialog = $('#delete-dialog');
+    var deleteLink = $('#delete-link');
+    deleteDialog.dialog({
+        autoOpen: false,
+        modal: true,
+        width: 476,
+        buttons: {
+            'OK': function() {
+                $(this).dialog('close');
+                location.href = deleteLink.attr('href');
+            },
+            'Cancel': function() {
+                $(this).dialog('close');
+            }
+        }
+    });
+    deleteLink.click(function() {
+        deleteDialog.dialog('open');
+        return false;
+    });
+}
+
+function initChangeStatusDialog() {
+    var changeStatusDialog = $('#change-status-dialog');
+    var changeStatusLink = $('.change-status-link');
+    var changeStatusForm = $('#change-status-form');
+    changeStatusDialog.dialog({
+        autoOpen: false,
+        modal: true,
+        width: 476,
+        buttons: {
+            'OK': function() {
+                changeStatusForm.submit();
+                $(this).dialog('close');
+            },
+            'Cancel': function() {
+                $(this).dialog('close');
+            }
+        }
+    });
+    changeStatusLink.click(function() {
+        changeStatusForm.attr('action', $(this).attr('href'));
+        changeStatusDialog.dialog('option', 'title', $(this).attr('title'));
+        changeStatusDialog.dialog('open');
+        return false;
+    });
 }

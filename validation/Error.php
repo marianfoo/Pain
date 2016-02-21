@@ -42,28 +42,38 @@
  */
 
 /**
- * Search criteria for {@link PainDao}.
- * <p>
- * Can be easily extended without changing the {@link PainDao} API.
+ * Validation error.
  */
-final class PainSearchCriteria {
+final class Error {
 
-    private $substance = null;
+    private $source;
+    private $message;
 
 
     /**
-     * @return string
+     * Create new error.
+     * @param mixed $source source of the error
+     * @param string $message error message
      */
-    public function getSubstance() {
-        return $this->substance;
+    function __construct($source, $message) {
+        $this->source = $source;
+        $this->message = $message;
     }
 
     /**
-     * @return PainSearchCriteria
+     * Get source of the error.
+     * @return mixed source of the error
      */
-    public function setSubstance($substance) {
-        $this->substance = $substance;
-        return $this;
+    public function getSource() {
+        return $this->source;
+    }
+
+    /**
+     * Get error message.
+     * @return string error message
+     */
+    public function getMessage() {
+        return $this->message;
     }
 
 }

@@ -158,7 +158,7 @@ final class PainDao {
         return $statement;
     }
     private static function throwDbError(array $errorInfo) {
-        // TODO log error, send email, etc.
+        // Pain log error, send email, etc.
         throw new Exception('DB error [' . $errorInfo[0] . ', ' . $errorInfo[1] . ']: ' . $errorInfo[2]);
     }
 

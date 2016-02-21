@@ -42,28 +42,50 @@
  */
 
 /**
- * Search criteria for {@link PainDao}.
- * <p>
- * Can be easily extended without changing the {@link PainDao} API.
+ * Validator for {@link Todo}.
+ * @see TodoMapper
  */
-final class PainSearchCriteria {
+final class PainValidator {
 
-    private $substance = null;
-
-
-    /**
-     * @return string
-     */
-    public function getSubstance() {
-        return $this->substance;
+    private function __construct() {
     }
 
     /**
-     * @return PainSearchCriteria
+     * Validate the given {@link Todo} instance.
+     * @param Todo $todo {@link Todo} instance to be validated
+     * @return array array of {@link Error} s
      */
-    public function setSubstance($substance) {
-        $this->substance = $substance;
-        return $this;
+    public static function validate(Pain $pain) {
+        $errors = array();
+        if (!$pain->getCreatedOn()) {
+            $errors[] = new Error('createdOn', 'Empty or invalid Created On.');
+        }
+        if (!$pain->getLastModifiedOn()) {
+            $errors[] = new Error('lastModifiedOn', 'Empty or invalid Last Modified On.');
+        }
+        if (!trim($pain->getSubstance())) {
+            $errors[] = new Error('status', 'Substance cannot be empty.');
+        } elseif (!self::isValidStatus($pain->getSubstance())) {
+            $errors[] = new Error('status', 'Invalid Substance set.');
+        }
+        return $errors;
     }
+
+    /**
+     * Validate the given status.
+     * @param string $status status to be validated
+     * @throws Exception if the status is not known
+     */
+    public static function validateSubstance($substance) {
+        if (!self::isValidSubstance($substance)) {
+            throw new Exception('Unknown status: ' . $substance);
+        }
+    }
+
+
+    private static function isValidSubstance($substance) {
+        return in_array($substance, Pain::allSubstances());
+    }
+
 
 }

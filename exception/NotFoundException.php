@@ -42,28 +42,8 @@
  */
 
 /**
- * Search criteria for {@link PainDao}.
- * <p>
- * Can be easily extended without changing the {@link PainDao} API.
+ * Exception which causes HTTP ERROR 404 (Not Found).
  */
-final class PainSearchCriteria {
-
-    private $substance = null;
-
-
-    /**
-     * @return string
-     */
-    public function getSubstance() {
-        return $this->substance;
-    }
-
-    /**
-     * @return PainSearchCriteria
-     */
-    public function setSubstance($substance) {
-        $this->substance = $substance;
-        return $this;
-    }
+final class NotFoundException extends Exception {
 
 }
