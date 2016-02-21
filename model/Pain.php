@@ -106,6 +106,13 @@ final class Pain {
     public function setSubstance($substance){
         $this->substance = $substance;
     }
+    public function getDeleted() {
+        return $this->deleted;
+    }
+
+    public function setDeleted($deleted) {
+        $this->deleted = (bool) $deleted;
+    }
 
         
     

@@ -46,23 +46,23 @@
  * <p>
  * Can be easily extended without changing the {@link TodoDao} API.
  */
-final class TodoSearchCriteria {
+final class PainSearchCriteria {
 
-    private $status = null;
+    private $substance = null;
 
 
     /**
      * @return string
      */
-    public function getStatus() {
-        return $this->status;
+    public function getSubstance() {
+        return $this->substance;
     }
 
     /**
      * @return TodoSearchCriteria
      */
-    public function setStatus($status) {
-        $this->status = $status;
+    public function setSubstance($substance) {
+        $this->substance = $substance;
         return $this;
     }
 
