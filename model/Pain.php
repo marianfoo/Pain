@@ -78,7 +78,7 @@ final class Pain {
     }
 
     public function setCreatedOn($createdOn) {
-        $this->createdon = $createdOn;
+        $this->createdOn = $createdOn;
     }
 
     public function setLastModifiedOn($lastModifiedOn) {

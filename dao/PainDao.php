@@ -17,7 +17,7 @@ final class PainDao {
         $result = array();
         foreach ($this->query($this->getFindSql($search)) as $row) {
             $pain = new Pain();
-            Painmapper::map($pain, $row);
+            PainMapper::map($pain, $row);
             $result[$pain->getId()] = $pain;
         }
         return $result;
@@ -28,7 +28,7 @@ final class PainDao {
             return null;
         }
         $pain = new Pain();
-        Painmapper::map($pain, $row);
+        PainMapper::map($pain, $row);
         return $pain;
     }
     public function save(Pain $pain) {

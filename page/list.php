@@ -9,9 +9,9 @@ $substance = Utils::getUrlParam('substance');
 
 $dao = new PainDao();
 $search = new PainSearchCriteria();
-$search->setStatus($substance);
+$search->setSubstance($substance);
 
 // data for template
-$title = Utils::capitalize($status) . ' Pains';
-$todos = $dao->find($search);
+$title = Utils::capitalize($substance);
+$pains = $dao->find($search);
 
