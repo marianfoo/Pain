@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="c14d385f-680f-496f-b2e1-015936377343" name="head" url="http://php.nerdroam.com">
+        <fileTransfer host="nerdroam.com" port="21" rootFolder="/head" username="ftp12517801-marian">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

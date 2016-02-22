@@ -7,7 +7,7 @@
  */
 
 final class Pain {
-    const PAIN = array(1,2,3,4,5,6,7,8,9,10);
+    const PAINARRAY = array(1,2,3,4,5,6,7,8,9,10);
     
     const IBUPROPHEN = "IBU";
     const MIRTAZAPIN = "MIRTA";
