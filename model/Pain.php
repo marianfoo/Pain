@@ -11,6 +11,10 @@ final class Pain {
     
     const IBUPROPHEN = "IBU";
     const MIRTAZAPIN = "MIRTA";
+
+    const UNI = "Uni";
+    const SCHLAF = "schlaf";
+
     
     private $id;
     private $createdOn;
@@ -21,12 +25,16 @@ final class Pain {
     private $quantity;
     private $substance;
     private $pain;
+    private $happen;
+
+
     
     
     public function __construct() {
         $now = new DateTime();
         $this->setCreatedOn($now);
         $this->setLastModifiedOn($now);
+        $this->setDeleted(false);
     }
     
     public static function allSubstances() {
@@ -112,6 +120,17 @@ final class Pain {
 
     public function setDeleted($deleted) {
         $this->deleted = (bool) $deleted;
+    }
+
+    public function setHappen($happen) {
+        $this->happen = $happen;
+    }
+    /**
+     * @return mixed
+     */
+    public function getHappen()
+    {
+        return $this->happen;
     }
 
         

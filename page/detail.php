@@ -41,51 +41,6 @@
  * Portions Copyrighted 2011 Sun Microsystems, Inc.
  */
 
-$errors = array();
-$pain = null;
-$edit = array_key_exists('id', $_GET);
-if ($edit) {
-    $todo = Utils::getPainByGetId();
-} else {
-    // set defaults
-    $pain = new Pain();
-    $pain->setSubstance(Pain::IBUPROPHEN);
-    $createdOn = new DateTime();
-    $pain->setCreatedOn($createdOn);
-    $pain->setHappen($createdOn);
-    $pain->setQuantity(1);
-    $pain->setAmount(400);
-
-}
-
-if (array_key_exists('cancel', $_POST)) {
-    // redirect
-    Utils::redirect('detail', array('id' => $pain->getId()));
-} elseif (array_key_exists('save', $_POST)) {
-    // for security reasons, do not map the whole $_POST['todo']
-    $data = array(
-        'created_on' => $_POST['pain']['created_on'],
-        'trigger' => $_POST['pain']['trigger'],
-        'comment' => $_POST['pain']['comment'],
-        'pain' => $_POST['pain']['pain'],
-        'substance' => $_POST['pain']['substance'],
-        'amount' => $_POST['pain']['amount'],
-        'quantity' => $_POST['pain']['quantity'],
-        'happen' => $_POST['pain']['happen']
-    );
-    ;
-    // map
-    PainMapper::map($pain,$data);
-    // validate
-    //$errors = PainValidator::validate($pain);
-    // validate
-    if (empty($errors)) {
-        // save
-        $dao = new PainDao();
-        $pain = $dao->save($pain);
-        Flash::addFlash('Headache Entry saved successfully.');
-        // redirect
-        //Utils::redirect('detail', array('id' => $pain->getId()));
-        Utils::createLink('list', array('substance' => Pain::IBUPROPHEN));
-    }
-}
+// data for template
+$pain = Utils::getPainByGetId();
+//$tooLate = $todo->getStatus() == Todo::STATUS_PENDING && $todo->getDueOn() < new DateTime();

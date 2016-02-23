@@ -29,8 +29,17 @@ final class PainMapper {
         if (array_key_exists('comment', $properties)) {
             $pain->setComment(($properties['comment']));
         }
-        if (array_key_exists('trigger', $properties)) {
+/*        if (array_key_exists('trigger', $properties)) {
             $pain->setTrigger(($properties['trigger']));
+        }*/
+        if (array_key_exists('trigger', $properties)) {
+            $trig = "";
+            foreach($properties['trigger'] as $item){
+                $trig .= $item;
+
+            }
+            $trig = implode(', ',$properties['trigger']);
+            $pain->setTrigger($trig);
         }
         if (array_key_exists('amount', $properties)) {
             $pain->setAmount($properties['amount']);
@@ -46,6 +55,12 @@ final class PainMapper {
         }
         if (array_key_exists('deleted', $properties)) {
             $pain->setDeleted($properties['deleted']);
+        }
+        if (array_key_exists('happen', $properties)) {
+            $happened = self::createDateTime($properties['happen']);
+            if ($happened) {
+                $pain->setHappen($happened);
+            }
         }
         
     }

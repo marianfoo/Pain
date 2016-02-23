@@ -80,9 +80,9 @@ function error_field($title, array $errors) {
 <form action="#" method="post">
     <fieldset>
         <div class="field">
-            <label>Created on:</label>
-            <input type="text" name="pain[createdOn]" value="<?php echo Utils::escape($pain->getCreatedOn()->format('Y-n-j')); ?>"
-                   class="text datepicker<?php echo error_field('createdOn', $errors); ?>" />
+            <label>Happened:</label>
+            <input type="text" name="pain[happen]" value="<?php echo Utils::escape($pain->getHappen()->format('Y-n-j'));  ?>"
+                   class="text datepicker<?php echo error_field('happen', $errors); ?>" />
         </div>
         <div class="field">
             <label>Pain:</label>
@@ -108,14 +108,27 @@ function error_field($title, array $errors) {
             <?php endforeach; ?>
             </select>
         </div>
+<!--        <div class="field">
+            <label>Trigger:</label>
+            <input type="text" name="pain[trigger]" value="<?php /*echo Utils::escape($pain->getTrigger()); */?>"
+                   class="text<?php /*echo error_field('trigger', $errors); */?>"/>
+        </div>-->
         <div class="field">
             <label>Trigger:</label>
-            <input type="text" name="pain[trigger]" value="<?php echo Utils::escape($pain->getTrigger()); ?>"
-                   class="text<?php echo error_field('trigger', $errors); ?>"/>
+            <table>
+                <tr>
+                    <td class='cbox'><input type="checkbox" name="pain[trigger][]" value="schlaf"></td><td class='label'>Schlaf</td>
+                    <td class='cbox'><input type="checkbox" name="pain[trigger][]" value="Uni"></td><td class='label'>Uni</td>
+                </tr>
+                <tr>
+                    <td class='cbox'><input type="checkbox" name="pain[trigger][]" value="Alkohol"></td><td class='label'>Alkohol</td>
+                    <td class='cbox'><input type="checkbox" name="pain[trigger][]" value="krank"></td><td class='label'>krank</td>
+                </tr>
+            </table>
         </div>
         <div class="field">
             <label>Quantity:</label>
-            <input type="text" name="pain[quantity]" value="<?php echo Utils::escape($pain->getAmount()); ?>"
+            <input type="text" name="pain[quantity]" value="<?php echo Utils::escape($pain->getQuantity()); ?>"
                    class="text<?php echo error_field('amount', $errors); ?>"/>
         </div>
         <div class="field">

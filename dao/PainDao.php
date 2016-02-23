@@ -92,11 +92,13 @@ final class PainDao {
     private function insert(Pain $pain) {
         $now = new DateTime();
         $pain->setId(null);
-        $pain->setCreatedOn($now);
         $pain->setLastModifiedOn($now);
         $sql = '
             INSERT INTO pain (id, created_on, last_modified_on, comment, trigger, amount, pain, substance, quantity, deleted)
                 VALUES (:id, :created_on, :last_modified_on, :comment, :trigger, :amount, :pain, :substance, :quantity, :deleted)';
+        $sql = "\n"
+            . "INSERT INTO `pain` (`id`, `created_on`, `last_modified_on`, `comment`, `trigger`, `amount`, `pain`, `substance`, `quantity`, `deleted`,`happen`)\n"
+            . "VALUES (:id, :created_on, :last_modified_on, :comment, :trigger, :amount, :pain, :substance, :quantity, :deleted, :happen)";
         return $this->execute($sql, $pain);
     }
     private function update(Pain $pain){
@@ -137,7 +139,8 @@ final class PainDao {
             ':pain' => $pain->getPain(),
             ':substance' => $pain->getSubstance(),
             ':quantity' => $pain->getQuantity(),
-            ':deleted' => $pain->getDeleted()
+            ':deleted' => $pain->getDeleted(),
+            ":happen" => $pain->getHappen()
         );
         if ($pain->getId()) {
             // unset created date, this one is never updated
