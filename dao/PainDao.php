@@ -93,9 +93,6 @@ final class PainDao {
         $now = new DateTime();
         $pain->setId(null);
         $pain->setLastModifiedOn($now);
-        $sql = '
-            INSERT INTO pain (id, created_on, last_modified_on, comment, trigger, amount, pain, substance, quantity, deleted)
-                VALUES (:id, :created_on, :last_modified_on, :comment, :trigger, :amount, :pain, :substance, :quantity, :deleted)';
         $sql = "\n"
             . "INSERT INTO `pain` (`id`, `created_on`, `last_modified_on`, `comment`, `trigger`, `amount`, `pain`, `substance`, `quantity`, `deleted`,`happen`)\n"
             . "VALUES (:id, :created_on, :last_modified_on, :comment, :trigger, :amount, :pain, :substance, :quantity, :deleted, :happen)";
@@ -103,18 +100,19 @@ final class PainDao {
     }
     private function update(Pain $pain){
         $pain->setLastModifiedOn(new DateTime());
-        $sql = '
-            UPDATE pain SET
-                last_modified_on = :last_modified_on,
-                comment = :comment,
-                trigger = :trigger,
-                amount = :amount,
-                pain = :pain,
-                substance = :substance,
-                quantity = :quantity,
-                deleted = :deleted
+        $sql = "
+            UPDATE `pain` SET
+                `last_modified_on` = :last_modified_on,
+                `comment` = :comment,
+                `trigger` = :trigger,
+                `amount` = :amount,
+                `pain` = :pain,
+                `substance` = :substance,
+                `quantity` = :quantity,
+                `deleted` = :deleted,
+                `happen` = :happen
             WHERE
-                id = :id';
+                id = :id";
         return $this->execute($sql, $pain);
     }
     private function execute($sql, Pain $pain) {
@@ -140,7 +138,7 @@ final class PainDao {
             ':substance' => $pain->getSubstance(),
             ':quantity' => $pain->getQuantity(),
             ':deleted' => $pain->getDeleted(),
-            ":happen" => $pain->getHappen()
+            ":happen" => self::formatDateTime($pain->getHappen())
         );
         if ($pain->getId()) {
             // unset created date, this one is never updated

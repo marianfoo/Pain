@@ -108,23 +108,10 @@ function error_field($title, array $errors) {
             <?php endforeach; ?>
             </select>
         </div>
-<!--        <div class="field">
-            <label>Trigger:</label>
-            <input type="text" name="pain[trigger]" value="<?php /*echo Utils::escape($pain->getTrigger()); */?>"
-                   class="text<?php /*echo error_field('trigger', $errors); */?>"/>
-        </div>-->
         <div class="field">
             <label>Trigger:</label>
-            <table>
-                <tr>
-                    <td class='cbox'><input type="checkbox" name="pain[trigger][]" value="schlaf"></td><td class='label'>Schlaf</td>
-                    <td class='cbox'><input type="checkbox" name="pain[trigger][]" value="Uni"></td><td class='label'>Uni</td>
-                </tr>
-                <tr>
-                    <td class='cbox'><input type="checkbox" name="pain[trigger][]" value="Alkohol"></td><td class='label'>Alkohol</td>
-                    <td class='cbox'><input type="checkbox" name="pain[trigger][]" value="krank"></td><td class='label'>krank</td>
-                </tr>
-            </table>
+            <input type="text" name="pain[trigger]" value="<?php echo Utils::escape($pain->getTrigger()); ?>"
+                   class="text<?php echo error_field('trigger', $errors); ?>"/>
         </div>
         <div class="field">
             <label>Quantity:</label>

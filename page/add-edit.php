@@ -45,7 +45,7 @@ $errors = array();
 $pain = null;
 $edit = array_key_exists('id', $_GET);
 if ($edit) {
-    $todo = Utils::getPainByGetId();
+    $pain = Utils::getPainByGetId();
 } else {
     // set defaults
     $pain = new Pain();
@@ -62,7 +62,7 @@ if (array_key_exists('cancel', $_POST)) {
     // redirect
     Utils::redirect('detail', array('id' => $pain->getId()));
 } elseif (array_key_exists('save', $_POST)) {
-    // for security reasons, do not map the whole $_POST['todo']
+    // for security reasons, do not map the whole $_POST['pain']
     $data = array(
         'created_on' => $_POST['pain']['created_on'],
         'trigger' => $_POST['pain']['trigger'],
@@ -73,7 +73,6 @@ if (array_key_exists('cancel', $_POST)) {
         'quantity' => $_POST['pain']['quantity'],
         'happen' => $_POST['pain']['happen']
     );
-    ;
     // map
     PainMapper::map($pain,$data);
     // validate

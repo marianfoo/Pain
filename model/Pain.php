@@ -27,6 +27,22 @@ final class Pain {
     private $pain;
     private $happen;
 
+    /**
+     * @return mixed
+     */
+    public function getHappen()
+    {
+        return $this->happen;
+    }
+
+    /**
+     * @param mixed $happen
+     */
+    public function setHappen($happen)
+    {
+        $this->happen = $happen;
+    }
+
 
     
     
@@ -122,16 +138,7 @@ final class Pain {
         $this->deleted = (bool) $deleted;
     }
 
-    public function setHappen($happen) {
-        $this->happen = $happen;
-    }
-    /**
-     * @return mixed
-     */
-    public function getHappen()
-    {
-        return $this->happen;
-    }
+
 
         
     

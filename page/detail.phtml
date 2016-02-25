@@ -87,8 +87,8 @@
     </tr>
     <tr>
         <th></th>
-<!--        <td>
-            <div class="statuses">
+       <td>
+           <!--             <div class="statuses">
             <?php /*foreach (Todo::allStatuses() as $status): */?>
                 <?php /*if ($status != $todo->getStatus()): */?>
                     <a href="<?php /*echo Utils::createLink('change-status', array('id' => $todo->getId(), 'status' => $status)); */?>" title="Change TODO status to <?php /*echo Utils::capitalize($status); */?>." class="change-status-link"
@@ -98,11 +98,12 @@
                 <?php /*endif; */?>
             <?php /*endforeach; */?>
             </div>
+            /-->
             <div class="actions">
-                <a href="<?php /*echo Utils::createLink('add-edit', array('id' => $todo->getId())); */?>"><img src="img/action/edit.png" alt="" title="Edit it." class="icon" /></a>
-                <a href="<?php /*echo Utils::createLink('delete', array('id' => $todo->getId())); */?>" id="delete-link"><img src="img/action/delete.png" alt="" title="Delete it." class="icon" /></a>
+                <a href="<?php echo Utils::createLink('add-edit', array('id' => $pain->getId())); ?>"><img src="img/action/edit.png" alt="" title="Edit it." class="icon" /></a>
+                <a href="<?php echo Utils::createLink('delete', array('id' => $pain->getId())); ?>" id="delete-link"><img src="img/action/delete.png" alt="" title="Delete it." class="icon" /></a>
             </div>
-        </td>-->
+        </td>
     </tr>
 </table>
 
