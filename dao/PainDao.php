@@ -22,7 +22,7 @@ final class PainDao {
         }
         return $result;
     }
-    public function findById($id) {
+    public function findPainById($id) {
         $row = $this->query('SELECT * FROM pain WHERE deleted = 0 and id = ' . (int) $id)->fetch();
         if (!$row) {
             return null;
@@ -30,6 +30,15 @@ final class PainDao {
         $pain = new Pain();
         PainMapper::map($pain, $row);
         return $pain;
+    }
+    public function findSubstanceById($id) {
+        $row = $this->query('SELECT * FROM substance WHERE id = ' . (int) $id)->fetch();
+        if (!$row) {
+            return null;
+        }
+        $substance = new Substance();
+        SubstanceMapper::map($substance, $row);
+        return $substance;
     }
     public function save(Pain $pain) {
         if ($pain->getId() === null) {
@@ -51,6 +60,21 @@ final class PainDao {
             ':id' => $id,
         ));
         return $statement->rowCount() == 1;
+    }
+    public function findPainsPerWeekday() {
+        $sql = 'SELECT dayname(happen),count(id) from pain where substance = 1 group by dayname(happen) order by weekday(happen) ';
+        $result = $this->query($sql)->fetchAll();
+        return $result;
+    }
+    public function findPainsPerWeek() {
+        $sql = 'SELECT week(happen,3) week,substr(yearweek(happen,3),1,4) year,count(id) count,sum(quantity*amount) as intake,
+                truncate(sum(quantity*amount)/count(id),0) as averageintake
+                from pain
+                where substance = 1
+                group by week,year
+                order by year desc,week desc';
+        $result = $this->query($sql)->fetchAll();
+        return $result;
     }
     private function getDb() {
         if ($this->db !== null) {
@@ -119,7 +143,7 @@ final class PainDao {
         $statement = $this->getDb()->prepare($sql);
         $this->executeStatement($statement, $this->getParams($pain));
         if (!$pain->getId()) {
-            return $this->findById($this->getDb()->lastInsertId());
+            return $this->findPainById($this->getDb()->lastInsertId());
         }
         if (!$statement->rowCount()) {
             throw new NotFoundException('PAIN with ID "' . $pain->getId() . '" does not exist.');

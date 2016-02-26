@@ -122,11 +122,23 @@ final class Utils {
             throw new NotFoundException('Invalid Pain identifier provided.');
         }
         $dao = new PainDao();
-        $pain = $dao->findById($id);
+        $pain = $dao->findPainById($id);
         if ($pain === null) {
             throw new NotFoundException('Unknown Pain identifier provided.');
         }
         return $pain;
+    }
+    public static function getSubstanceByGetId($id) {
+
+        if (!is_numeric($id)) {
+            throw new NotFoundException('Invalid Pain identifier provided.');
+        }
+        $dao = new PainDao();
+        $substance = $dao->findSubstanceById($id);
+        if ($substance === null) {
+            throw new NotFoundException('Unknown Pain identifier provided.');
+        }
+        return $substance;
     }
 
     /**

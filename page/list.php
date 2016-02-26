@@ -12,6 +12,8 @@ $search = new PainSearchCriteria();
 $search->setSubstance($substance);
 
 // data for template
-$title = Utils::capitalize($substance);
+
 $pains = $dao->find($search);
+$title = Utils::getSubstanceByGetId($substance);
+$title = $title->getDescription();
 

@@ -9,8 +9,8 @@
 final class Pain {
     const PAINARRAY = array(1,2,3,4,5,6,7,8,9,10);
     
-    const IBUPROPHEN = "IBU";
-    const MIRTAZAPIN = "MIRTA";
+    const IBUPROPHEN = "1";
+    const MIRTAZAPIN = "2";
 
     const UNI = "Uni";
     const SCHLAF = "schlaf";

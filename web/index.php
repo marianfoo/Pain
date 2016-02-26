@@ -98,6 +98,8 @@ final class Index {
             'PainDao' => '../dao/PainDao.php',
             'PainMapper' => '../mapping/PainMapper.php',
             'Pain' => '../model/Pain.php',
+            'SubstanceMapper' => '../mapping/SubstanceMapper.php',
+            'Substance' => '../model/Substance.php',
             'PainSearchCriteria' => '../dao/PainSearchCriteria.php',
             'PainValidator' => '../validation/PainValidator.php',
             'Utils' => '../util/Utils.php',

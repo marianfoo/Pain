@@ -59,7 +59,7 @@
 <table class="detail">
     <tr>
         <th>Substance</th>
-        <td><?php echo $pain->getSubstance(); ?></td>
+        <td><?php echo Utils::getSubstanceByGetId($pain->getSubstance())->getDescription() ?></td>
     </tr>
     <tr>
         <th>Happened on:</th>
