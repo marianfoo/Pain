@@ -66,16 +66,16 @@ final class PainDao {
     }
     private function getFindSql(PainSearchCriteria $search = null) {
         $sql = 'SELECT * FROM pain WHERE deleted = 0 ';
-        $orderBy = ' substance, created_on';
+        $orderBy = ' substance, happen';
         if ($search !== null) {
             if ($search->getSubstance() !== null) {
                 $sql .= 'AND substance = ' . $this->getDb()->quote($search->getSubstance());
                 switch ($search->getSubstance()) {
                     case Pain::IBUPROPHEN:
-                        $orderBy = 'created_on DESC';
+                        $orderBy = 'happen DESC';
                         break;
                     case Pain::MIRTAZAPIN:
-                        $orderBy = 'created_on DESC';
+                        $orderBy = 'happen DESC';
                         break;
                     default:
                         throw new Exception('No order for substance: ' . $search->getSubstance());
@@ -101,7 +101,7 @@ final class PainDao {
     private function update(Pain $pain){
         $pain->setLastModifiedOn(new DateTime());
         $sql = "
-            UPDATE `pain` SET
+            UPDATE pain SET
                 `last_modified_on` = :last_modified_on,
                 `comment` = :comment,
                 `trigger` = :trigger,

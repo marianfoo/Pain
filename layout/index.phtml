@@ -56,11 +56,27 @@
     <meta name="description" content="Headache Diary - based on a sample application for NetBeans IDE" />
     <meta name="keywords" content="Headache Diary" />
     <meta name="author" content="me" />
+    <meta charset="utf-8">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <meta http-equiv="cleartype" content="on">
+
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/touch/apple-touch-icon-144x144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/touch/apple-touch-icon-114x114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/touch/apple-touch-icon-72x72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="img/touch/apple-touch-icon-57x57-precomposed.png">
+    <link rel="shortcut icon" sizes="196x196" href="img/touch/touch-icon-196x196.png">
+    <link rel="shortcut icon" href="img/touch/apple-touch-icon.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="img/touch/apple-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#222222">
 
     <link type="text/css" href="css/redmond/jquery-ui-1.8.16.custom.css" rel="stylesheet" />
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <link href="css/layout.css" rel="stylesheet" type="text/css" />
-
+    <link href="css/main.css" rel="stylesheet" type="text/css" />
+    <link href="css/normalize.css" rel="stylesheet" type="text/css" />
+    <script src="js/vendor/modernizr-2.7.1.min.js"></script>
     <script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
     <script type="text/javascript" src="js/jquery-ui-1.8.16.custom.min.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
@@ -80,9 +96,9 @@
                             <ul class="list">
                                 <li><span><a href="<?php echo Utils::createLink('home'); ?>">Home</a></span></li>
                                 <li><span><a href="<?php echo Utils::createLink('list', array('substance' => Pain::IBUPROPHEN)); ?>"
-                                             ><img src="img/status/PENDING.png" alt="" title="IBUPROPHEN" class="icon" />IBUPROPHEN</a></span></li>
+                                             ><img src="img/IBU.png" alt="" title="IBUPROPHEN" class="icon" />IBUPROPHEN</a></span></li>
                                 <li><span><a href="<?php echo Utils::createLink('list', array('substance' => Pain::MIRTAZAPIN)); ?>"
-                                             ><img src="img/status/DONE.png" alt="" title="MIRTAZAPIN" class="icon" />MIRTAZAPIN</a></span></li>
+                                             ><img src="img/MIRTA.png" alt="" title="MIRTAZAPIN" class="icon" />MIRTAZAPIN</a></span></li>
                                 <li class="last"><span><a href="<?php echo Utils::createLink('add-edit'); ?>"
                                              ><img src="img/action/add.png" alt="" title="Add Diary entry" class="icon" />Add Diary entry</a></span></li>
                             </ul>

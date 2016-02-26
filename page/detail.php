@@ -43,4 +43,7 @@
 
 // data for template
 $pain = Utils::getPainByGetId();
+if($pain->getComment() == ""){
+    $pain->setComment("no Comment entered");
+}
 //$tooLate = $todo->getStatus() == Todo::STATUS_PENDING && $todo->getDueOn() < new DateTime();

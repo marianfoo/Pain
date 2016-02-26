@@ -69,7 +69,7 @@ final class Utils {
         if ($date === null) {
             return '';
         }
-        return $date->format('m/d/Y');
+        return $date->format('d.m.Y');
     }
 
     /**
@@ -81,7 +81,7 @@ final class Utils {
         if ($date === null) {
             return '';
         }
-        return $date->format('m/d/Y H:i');
+        return $date->format('d.m.Y H:i');
     }
 
     /**

@@ -59,19 +59,19 @@
 <table class="detail">
     <tr>
         <th>Substance</th>
-        <td><img alt="Priority <?php echo $pain->getSubstance(); ?>" title="Substance <?php echo $pain->getSubstance(); ?>" /></td>
+        <td><?php echo $pain->getSubstance(); ?></td>
     </tr>
     <tr>
         <th>Happened on:</th>
-        <td><?php echo Utils::escape(Utils::formatDateTime($pain->getHappen())); ?></td>
+        <td><?php echo Utils::escape(Utils::formatDate($pain->getHappen())); ?></td>
     </tr>
     <tr>
-        <th>Last Modified On</th>
-        <td><?php echo Utils::escape(Utils::formatDateTime($pain->getLastModifiedOn())); ?></td>
+        <th>Quantity x Amount</th>
+        <td><?php echo $pain->getQuantity() ;echo " x ";echo $pain->getAmount();?> </td>
     </tr>
     <tr>
         <th>Pain</th>
-        <td><?php echo Utils::escape($pain->getPain()); ?></td>
+        <td><?php echo Utils::escape($pain->getPain())." / 10"; ?></td>
     </tr>
     <tr>
         <th>Trigger</th>

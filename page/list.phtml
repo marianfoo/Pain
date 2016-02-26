@@ -50,25 +50,25 @@
 ?>
 
 <h1>
-    <img src="img/status/<?php echo $substance; ?>.png" alt="" title="<?php echo Utils::capitalize($substance); ?>" class="icon" />
+    <img src="img/<?php echo $substance; ?>.png" alt="" title="<?php echo Utils::capitalize($substance); ?>" class="icon" />
     <?php echo $title; ?>
 </h1>
 
 <?php if (empty($pains)): ?>
     <p>No Entries items found.</p>
 <?php else: ?>
-    <ul class="list">
+    <ul class="listed">
         <?php foreach ($pains as $pain): ?>
             <?php /* @var $todo Todo */ ?>
             <li>
 <!--                <img src="img/priority/--><?php //$pain->getPain(); ?><!--.png" alt="Priority --><?php //echo $todo->getPriority(); ?><!--" title="Priority --><?php //echo $todo->getPriority(); ?><!--" />-->
-                <h3><a href="<?php echo Utils::createLink('detail', array('id' => $pain->getId())) ?>"><?php echo Utils::escape($pain->getSubstance()); ?></a></h3>
+                <h3><a href="<?php echo Utils::createLink('detail', array('id' => $pain->getId())) ?>"><?php echo "ID: ".Utils::escape($pain->getId()); ?></a></h3>
                 <?php if ($pain->getComment()): ?>
                     <p class="description"><?php echo Utils::escape($pain->getComment()); ?></p>
                 <?php endif; ?>
-                <p><span class="label">Created On:</span> <?php echo Utils::escape(Utils::formatDate($pain->getCreatedOn())); ?></p>
+                <p><span class="label">Happened on:</span><b> <?php echo Utils::escape(Utils::formatDate($pain->getHappen())); ?></b></p>
                 <p><span class="label">Trigger: </span><?php echo Utils::escape($pain->getTrigger());?> </p>
-                <p><?php echo Utils::escape($pain->getAmount()) ?> x <?php echo Utils::escape($pain->getQuantity())?> mg</p>
+                <p><?php echo Utils::escape($pain->getQuantity()) ?> x <?php echo Utils::escape($pain->getAmount())?> mg</p>
 
 
             </li>

@@ -29,17 +29,8 @@ final class PainMapper {
         if (array_key_exists('comment', $properties)) {
             $pain->setComment(($properties['comment']));
         }
-/*        if (array_key_exists('trigger', $properties)) {
-            $pain->setTrigger(($properties['trigger']));
-        }*/
         if (array_key_exists('trigger', $properties)) {
-            $trig = "";
-            foreach($properties['trigger'] as $item){
-                $trig .= $item;
-
-            }
-            $trig = implode(', ',$properties['trigger']);
-            $pain->setTrigger($trig);
+            $pain->setTrigger(($properties['trigger']));
         }
         if (array_key_exists('amount', $properties)) {
             $pain->setAmount($properties['amount']);
